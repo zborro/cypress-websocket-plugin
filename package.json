@@ -1,0 +1,29 @@
+{
+  "name": "cypress-websocket-plugin",
+  "version": "0.1.0",
+  "description": "Cypress plugin for dealing with single page apps using websockets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zborro/cypress-websocket-plugin.git"
+  },
+  "keywords": [
+    "cypress",
+    "websocket",
+    "socket.io"
+  ],
+  "author": "Sławomir Zborowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zborro/cypress-websocket-plugin/issues"
+  },
+  "homepage": "https://github.com/zborro/cypress-websocket-plugin#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "socket.io": "^2.2.0"
+  }
+}
