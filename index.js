@@ -16,7 +16,7 @@ function substituteVariables(ref, variables) {
 }
 
 
-function startFakeWebsocketServer() {
+function startFakeWebsocketServer(serverConfig) {
     const app = express();
     const port = 3000;
     const server = app.listen(port, () => {
@@ -28,9 +28,9 @@ function startFakeWebsocketServer() {
     app.use(bodyParser.json());
 
     let messages = [];
-    let variables = [];
+    let variables = (serverConfig && serverConfig.variables) || [];
     let timers = [];
-    let options = {
+    let options = (serverConfig && serverConfig.options) || {
         responses: {},
         periodicMessages: [],
     };
