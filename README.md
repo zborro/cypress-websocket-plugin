@@ -2,9 +2,9 @@
 
 > Cypress plugin for mocking websockets (socket.io version 2)
 
-WARNING: This is experimental software. It works and was tested against socket.io version 2 only.
+## Requirements
 
-Once it's battle-tested in one of my projects I will document it.
+* `Cypress 10.x`
 
 ## Installation
 
@@ -50,7 +50,20 @@ import { addCommands } from "cypress-websocket-plugin/commands.js";
 addCommands();
 ```
 
+### Caveats
+
+* port is not configurable, it's fixed as `3000`. This is on my list.
+* this plugin was tested and works with Socket.IO version 2 only.
+
 ### Example usage
+
+Imagine you have application, that after clicking on some button will issue two
+messages over WebSocket:
+
+* "hey, I just met you", args: "and this is craAAzy"
+* "but here's my number", args: "so call me maybe"
+
+This is how it would be tested with the plugin:
 
 ```js
 beforeEach(() => {
@@ -60,10 +73,11 @@ beforeEach(() => {
 
 describe('empty spec', () => {
   it('passes', () => {
-    // do whatever you want, like cy.visit etc
+    // cy.visit(someUrl);
+    // cy.get("#btn").click();
     // ...
 
-    // then, if app was supposed to send WS messages, we can check it
+    // actual check  <-------
     cy.expectWsMessages(
         [
             ["hey, I just met you", "and this is craAAzy"],
@@ -71,3 +85,11 @@ describe('empty spec', () => {
         ]
     );
 ```
+
+### Modyfying dynamic variables - example
+
+TODO (you can control values returned by the server from the test easily)
+
+### Changing behavior of the websocket server / overriding options - example
+
+TODO (you can completely change how server behaves in run-time, or before each test)
