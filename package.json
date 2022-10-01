@@ -1,6 +1,6 @@
 {
   "name": "cypress-websocket-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cypress plugin for dealing with single page apps using websockets",
   "main": "index.js",
   "scripts": {
