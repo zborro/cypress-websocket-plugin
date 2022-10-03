@@ -92,4 +92,19 @@ TODO (you can control values returned by the server from the test easily)
 
 ### Changing behavior of the websocket server / overriding options - example
 
-TODO (you can completely change how server behaves in run-time, or before each test)
+In the test following code can be used to modify options passed in Cypress configuration file:
+
+```js
+  cy.overrideWsOptions({
+    responses: {
+        'on-msg-1': ['msg-1-reply', 'arg'],
+        'on-msg-2': ['msg-2-reply', 'arg'],
+        // ...
+    },
+    periodicMessages: [
+        {"name": "periodic", "args": ["heartbeat", 1], "interval": 2500},
+        {"name": "periodic", "args": ["heartbeat", 2], "interval": 5000},
+        // ...
+    ]
+  });
+```

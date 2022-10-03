@@ -7,6 +7,14 @@ function addCommands() {
       cy.request("DELETE", "http://localhost:3000/__cypress/messages");
   });
 
+  Cypress.Commands.add("overrideWsOptions", options => {
+      cy.request({
+        method: "POST",
+        url: "http://localhost:3000/__cypress/options",
+        body: options,
+      );
+  });
+
   Cypress.Commands.add("expectWsMessages", (expected, options) => {
       const sleepTime = 250;
       const maxInvocations = ((options && options.timeout) || 2500) / sleepTime;
